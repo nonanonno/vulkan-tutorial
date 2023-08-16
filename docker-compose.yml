@@ -1,0 +1,23 @@
+services:
+  container:
+    build: docker
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    environment:
+      - DISPLAY
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - XDG_RUNTIME_DIR=/tmp/runtime-xdg_runtime_dir
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /usr/share/vulkan:/usr/share/vulkan:ro
+      - .:/workspaces/vulkan-tutorial:cached
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]

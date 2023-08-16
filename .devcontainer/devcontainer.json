@@ -1,0 +1,11 @@
+{
+    "name": "vulkan development environment",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "container",
+    "workspaceFolder": "/workspaces/vulkan-tutorial",
+    "shutdownAction": "stopCompose",
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {}
+    }
+}
