@@ -8,7 +8,10 @@ services:
       - XDG_RUNTIME_DIR=/tmp/runtime-xdg_runtime_dir
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - /usr/share/vulkan:/usr/share/vulkan:ro
+      - /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d:ro
+      - /usr/share/vulkan/implicit_layer.d:/usr/share/vulkan/implicit_layer.d:ro
+      # - /usr/share/vulkan/explicit_layer.d/VkLayer_INTEL_nullhw.json:/usr/share/vulkan/explicit_layer.d/VkLayer_INTEL_nullhw.json:ro
+      # - /usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json:/usr/share/vulkan/explicit_layer.d/VkLayer_MESA_overlay.json:ro
       - .:/workspaces/vulkan-tutorial:cached
     cap_add:
       - SYS_PTRACE
